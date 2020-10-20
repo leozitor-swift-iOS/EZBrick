@@ -11,7 +11,8 @@ import SwiftUI
 struct EZBrickApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            let app = EZBrickViewModel()
+            EZBrickView(viewModel: app)
         }
     }
 }
