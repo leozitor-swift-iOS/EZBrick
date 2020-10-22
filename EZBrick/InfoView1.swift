@@ -8,20 +8,16 @@
 import SwiftUI
 
 struct InfoView1: View {
-    @EnvironmentObject var viewModel: EZBrickViewModel
-    
-    @Binding var user: BuyOrRent.Person
-    @Binding var userPartner: BuyOrRent.Person
-    @Binding var house: BuyOrRent.Realty
+    @ObservedObject var viewModel: EZBrickViewModel
     
     var option: String
     
     var body: some View {
         HeaderInfoView(progress: 0.1) {
-            fillInfo(user: $user, userPartner: $userPartner)
+            fillInfo(user: $viewModel.model.user, userPartner: $viewModel.model.userPartner)
                 .navigationBarTitle("Cadastro")
                 .navigationBarItems(trailing: NavigationLink(
-                                        destination: InfoView2(user: $user, userPartner: $userPartner, house: $house).animation(.easeInOut),
+                                        destination: InfoView2(viewModel: viewModel).animation(.easeInOut),
                                         label: {
                                             Text("SEGUINTE")
                                         })
@@ -62,7 +58,7 @@ func fillUserInfo(person: Binding<BuyOrRent.Person>) -> some View {
     TextField("Profissão", text: person.occupation)
     
 }
-
+/*
 struct InfoView1_Previews: PreviewProvider {
     @State static var user = BuyOrRent.Person(firstName: "Leozitor", lastName: "Floro", age: "27", cpf: "", occupation: "", email: "")
     @State static var userPartner = BuyOrRent.Person(firstName: "Farluce", lastName: "Chaves", age: "29", cpf: "", occupation: "", email: "")
@@ -72,3 +68,4 @@ struct InfoView1_Previews: PreviewProvider {
         InfoView1(user: $user, userPartner: $userPartner, house: $house, option: "")
     }
 }
+*/

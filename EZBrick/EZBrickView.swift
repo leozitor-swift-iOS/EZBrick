@@ -10,27 +10,15 @@ import SwiftUI
 struct EZBrickView: View {
     @ObservedObject var viewModel: EZBrickViewModel
     
-    @State var user: BuyOrRent.Person
-    @State var userPartner: BuyOrRent.Person
-    @State var house: BuyOrRent.Realty
-   
-    
     init(viewModel: EZBrickViewModel) {
         self.viewModel = viewModel
-        _user = State(wrappedValue: viewModel.user)
-        _userPartner = State(wrappedValue: viewModel.user)
-        _house = State(wrappedValue: viewModel.house)
     }
     
     var body: some View {
         GeometryReader { geometry in
             NavigationView {
                 VStack {
-                    Text(viewModel.user.firstName)
-                    TextField("teste", text: $viewModel.user.firstName)
                     Text("EZ Brick").font(.largeTitle).padding(.top, 20)
-                    //debugg
-                    //Text("\(viewModel.user.firstName)")
                     HStack{
                         button(image: Image("invest"), text: Text("INVESTIR EM IMÓVEL"), option: "rent")
                         Spacer(minLength: 10)
@@ -50,7 +38,7 @@ struct EZBrickView: View {
     func button(image: Image, text: Text, option: String) -> some View {
         VStack {
             NavigationLink(
-                destination: InfoView1(user: $user, userPartner: $userPartner, house: $house, option: option),
+                destination: InfoView1(viewModel: viewModel, option: option),
                 label: {
                     ZStack {
                         Rectangle().foregroundColor(.clear)
