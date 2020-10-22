@@ -13,6 +13,7 @@ struct EZBrickView: View {
     @State var user: BuyOrRent.Person
     @State var userPartner: BuyOrRent.Person
     @State var house: BuyOrRent.Realty
+   
     
     init(viewModel: EZBrickViewModel) {
         self.viewModel = viewModel
@@ -25,6 +26,8 @@ struct EZBrickView: View {
         GeometryReader { geometry in
             NavigationView {
                 VStack {
+                    Text(viewModel.user.firstName)
+                    TextField("teste", text: $viewModel.user.firstName)
                     Text("EZ Brick").font(.largeTitle).padding(.top, 20)
                     //debugg
                     //Text("\(viewModel.user.firstName)")

@@ -10,7 +10,7 @@ import SwiftUI
 struct InfoView2: View {
     @EnvironmentObject var viewModel: EZBrickViewModel
     
-    @State private var warrantyFund = false
+    @State var warrantyFund = false
     
     @Binding var user: BuyOrRent.Person
     @Binding var userPartner: BuyOrRent.Person
