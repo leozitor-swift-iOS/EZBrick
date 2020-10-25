@@ -10,6 +10,15 @@ import SwiftUI
 struct InfoView1: View {
     @ObservedObject var viewModel: EZBrickViewModel
     
+    var disableForm: Bool {
+        if spouseTrue {
+            return viewModel.model.user.isPersonEmpty
+        }
+        else {
+            return viewModel.model.user.isPersonEmpty || viewModel.model.userPartner.isPersonEmpty
+        }
+    }
+    
     var option: String
     
     var body: some View {
@@ -20,7 +29,7 @@ struct InfoView1: View {
                                         destination: InfoView2(viewModel: viewModel).animation(.easeInOut),
                                         label: {
                                             Text("SEGUINTE")
-                                        })
+                                        }).disabled(disableForm)
                 )
         }
     }

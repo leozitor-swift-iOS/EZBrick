@@ -10,7 +10,7 @@ import SwiftUI
 class EZBrickViewModel: ObservableObject {
     @Published var model: BuyOrRent = EZBrickViewModel.createUsers()
     
-    private static func createUsers() -> BuyOrRent {
+    static func createUsers() -> BuyOrRent {
         let app = BuyOrRent()
         return app
     }
@@ -19,10 +19,5 @@ class EZBrickViewModel: ObservableObject {
     var user: BuyOrRent.Person {
         model.user
     }
-    var userPartner: BuyOrRent.Person {
-        model.userPartner
-    }
-    var house: BuyOrRent.Realty {
-        model.house
-    }
+
 }

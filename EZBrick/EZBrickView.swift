@@ -10,10 +10,6 @@ import SwiftUI
 struct EZBrickView: View {
     @ObservedObject var viewModel: EZBrickViewModel
     
-    init(viewModel: EZBrickViewModel) {
-        self.viewModel = viewModel
-    }
-    
     var body: some View {
         GeometryReader { geometry in
             NavigationView {
